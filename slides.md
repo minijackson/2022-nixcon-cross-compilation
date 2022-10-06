@@ -85,6 +85,20 @@ Both of these architectures are considered "Tier 2" for support in nixpkgs
 
 :::
 
+## Definition
+
+Cross-compilation:
+: Compiling a package from a given system, for a different system
+
+::: notes
+We might do that due to:
+
+- performance issue: a Raspberry Pi doesn't have same computation power or
+  memory than a development laptop.
+- availability issue: we might want to compile something for Windows without
+  having access to one
+:::
+
 ## Why is it special?
 
 ```{.console linenos=false}
@@ -117,22 +131,43 @@ user@pc ~ % x86_64-darwin-gcc test.c
 
 ## Build systems can be complicated
 
+### Running the build
+
+Build systems needs to be run on the build machine
+
+. . .
+
 ### Configuring
 
 Tools for finding dependencies need to run on the build machine
+
+. . .
 
 ### Building
 
 Tools that generates code need to run on the build machine
 
+. . .
+
 ### Testing
 
 Tests need to run on the build machine
 
-## Caveats
+::: notes
 
-- Running unit tests
-- Building tools in the compilation process
+- Build systems, like `autotools`, `cmake`, `meson`
+- For configuring, the most notable one is `pkg-config` which generically finds
+  libraries and compilation options for dependencies.
+- But other tools exist, for example `llvm-config`, which is specific to LLVM.
+- For building, compilers are the most notable, but we can also have tools like
+  in wayland or protobuf, which generates C code from protocol description
+  files.
+- And for compilers the compiler must be configured so that the binary code
+  that it generates runs on the platform we're interested in.
+- And also, you have a lot of exception, lots of handmade build systems which
+  can complicate packaging
+
+:::
 
 # Cross-compilation with Nix
 
@@ -160,6 +195,22 @@ Platform building the software    Platform running the software   Platform for w
 ---
 
 ![Cross-compiling `htop`](./imgs/canadian-cross-htop.png){width=70%}
+
+## Specifying dependencies in Nixpkgs
+
+![Types of inputs](./imgs/deps-types.png){width=70% align=center}
+
+. . .
+
+`deps${HOST}${TARGET}`{.bash}
+
+::: notes
+
+Those three are the most common, especially `buildInputs` and
+`nativeBuildInputs`, but you can find some special cases. For example, the
+`gcc` package also uses `depsBuildTarget` and `depsTargetTarget`.
+
+:::
 
 # Let's find a weird case
 
