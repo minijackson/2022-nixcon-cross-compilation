@@ -67,6 +67,14 @@ references:
 nocite: "@*"
 ---
 
+## What are we doing here?
+
+My original end goal:
+: Create a NixOS image for a board to be used in a particle accelerator.
+
+This talk's goal:
+: Learn about cross-compilation, in Nix and NixOS, and some debugging.
+
 # What is cross-compilation?
 
 ## People can't seem to agree
@@ -144,7 +152,7 @@ user@pc ~ % x86_64-darwin-gcc test.c
 
 ### Running the build
 
-Build systems needs to be run on the build machine
+Build systems need to run on the build machine
 
 . . .
 
@@ -166,7 +174,7 @@ Tests need to run on the build machine
 
 ::: notes
 
-- Build systems, like `autotools`, `cmake`, `meson`
+- Build systems, like `make`, `autotools`, `cmake`, `meson`
 - For configuring, the most notable one is `pkg-config` which generically finds
   libraries and compilation options for dependencies.
 - But other tools exist, for example `llvm-config`, which is specific to LLVM.
@@ -177,6 +185,8 @@ Tests need to run on the build machine
   that it generates runs on the platform we're interested in.
 - And also, you have a lot of exception, lots of handmade build systems which
   can complicate packaging
+- But for every normal dependency, it should be compiled for the machine we're
+  interested in
 
 :::
 
@@ -287,6 +297,9 @@ only `system`.
 And then use something from `config.system.build`.
 
 ::: notes
+You can also put `config.allowUnsupportedSystem` in the nixpkgs import, but I
+didn't have enough space in the slide.
+
 This can be used to generate just the file system, the kernel, the initramfs,
 an SD card image, etc.
 
@@ -347,8 +360,8 @@ TODO: keep?
 - Yocto works in layers (think: overlays)
 - We have a layer for our board
 - Our layer have dependencies on other layers
-- Depencies are not listed
-- Depencies versions are not documented
+- Dependencies are not listed
+- Dependencies versions are not documented
 
 ::: notes
 Yocto layers contain mainly packages and image types, but can also modify
@@ -497,13 +510,131 @@ Not rustc, though, let's find a way to remove the dependency
 
 ## Closure debugging time!
 
+```console
+user@pc ~ % nix path-info --derivation --recursive .|rg rustc
+/nix/store/...-rustc-1.60.0-src.tar.gz.drv
+/nix/store/...-rustc-bootstrap-1.59.0.drv
+/nix/store/...-rustc-1.60.0.drv
+/nix/store/...-rustc-1.60.0.drv
+```
 
+## First rustc
+
+```console
+user@pc ~ % nix why-depends --derivation . \
+  /nix/store/...-rustc-1.60.0.drv
+/nix/store/...-nixos-system-...
+└───/nix/store/...-polkit-powerpc64-...
+    └───/nix/store/...-spidermonkey-powerpc64-...
+        └───/nix/store/...-rust-cbindgen-0.23.0.drv
+            └───/nix/store/...-rustc-1.60.0.drv
+```
+
+::: notes
+From the manual, it seems polkit is disabled by default, so it's weird that it
+is enabled in my minimal configuration
+:::
+
+## Where polkit?
+
+```console
+user@pc ~ % nix eval ".# \
+  nixosConfigurations \
+  .ifc1410 \
+  .options \
+  .security.polkit.enable \
+  .files"
+[ ".../nixos/modules/services/hardware/udisks2.nix" ]
+```
+
+. . .
+
+```nix
+services.udisks2.enable = false;
+```
+
+## Second rustc
+
+```console
+user@pc ~ % nix why-depends --derivation . \
+  /nix/store/...-rustc-1.60.0.drv
+/nix/store/...-nixos-system-...
+└───/nix/store/...-etc.drv
+    └───/nix/store/...-system-units
+        └───...-unit-generate-shutdown-ramfs.service
+            └───...-make-initrd-ng-powerpc64-...
+                └───...-rustc-1.60.0.drv
+```
+
+. . .
+
+```nix
+systemd.shutdownRamfs.enable = false;
+```
+
+---
+
+Now, onwards to \textcolor{red}{linux}...
+
+. . .
+
+This took a lot of time
+
+::: notes
+This both took a lot of time and was very unnerving, because the Linux kernel
+had no issues when buildint it through Yocto, with the same version of GCC.
+
+And my mind could not fathom that Yocto was in any shape of form superior to
+NixOS.
+:::
+
+## And the culprit was...
+
+. . .
+
+**\textcolor{blue}{binutils}**, kinda?
+
+. . .
+
+- **\textcolor{blue}{binutils}** contains the assembler
+- sometimes, **gcc** passes the wrong machine to the assembler...
+- ... and so the assembler fails because some assembly instruction are for the
+  wrong machine
+
+::: notes
+And the frustrating thing was that binutils *has* a fix, but wasn't in any
+released version.
+
+And Yocto was fetching it's binutils from an unreleased version, on a specific
+commit from a development branch.
+
+Oh well, I fetched the fix as a patch, applied it and moved on...
+:::
 
 # Workarounds in practice
 
-## An slide
+## The hacks file
 
-Much content
+```nix
+self: super: {
+  kexec-tools = prev.kexec-tools.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [
+      (pkgs.fetchpatch {
+        url = "https://.../void-linux/.../ppc64-elfv2.patch";
+        hash = "...";
+      })
+    ];
+  });
+}
+```
+
+::: notes
+The same was done for nettle, and binutils, with a big comment explaining the
+situation for binutils.
+
+I quite like having a `hacks.nix` file, it blatantly tells you that "things are
+not perfect, here's exactly what's quirky"
+:::
 
 # Conclusion
 
@@ -516,15 +647,16 @@ It took some effort to get there, but:
 - The code is clear (I think)
 - The whole store is compressed!
 - Most issues arose from the (quite old) `powerpc64` big-endian architecture
-- And the friggin' `binutils` issue
+- And the friggin' `gcc` / `binutils` issue
 
 ## Things that were a bit hard with Nix (but just a bit)
 
 - How to add a custom kernel
 - How to add custom kernel configurations and DTBs
 - Actually compiling DTBs for the powerpc architecture
+- What kernel options are needed for NixOS (and notably the firewall)
 - The U-Boot netboot
-- Removing some unneeded filesystems / grub
+- Removing some unneeded file-systems / grub
 
 ::: notes
 To be fair, I haven't communicated that much on these issues, but sitting down
@@ -535,10 +667,12 @@ are very recent: since this is a flake project I just took an old commit,
 commented out the workarounds, and I could see all the old errors that I had.
 :::
 
-# Bonus: Network boot
+## Bonus: Network boot
 
-## An slide
+. . .
 
-Much content
+Come see me afterwards
+
+`:)`
 
 ## Bibliography
