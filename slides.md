@@ -359,7 +359,7 @@ TODO: keep?
 
 - Yocto works in layers (think: overlays)
 - We have a layer for our board
-- Our layer have dependencies on other layers
+- Our layer has dependencies on other layers
 - Dependencies are not listed
 - Dependencies versions are not documented
 
@@ -381,7 +381,7 @@ layers, update software for the Nix package that I'm creating...
   # Removes some default things
   imports = [ (modulesPath + "/profiles/minimal.nix") ];
 
-  nixpkgs.crossSystem = lib.systems.ppc64;
+  nixpkgs.crossSystem = lib.systems.examples.ppc64;
   nixpkgs.config.allowUnsupportedSystem = true;
 
   # Do the stable version
@@ -552,6 +552,15 @@ user@pc ~ % nix eval ".# \
 ```nix
 services.udisks2.enable = false;
 ```
+
+::: notes
+Looking at the `udisks2.nix` file, it looks like udisks2 is enabled by default,
+which enables polkit. So even though polkit is marked as disabled by default,
+the fact that udisks pulls it in makes it, in effect, enabled by default.
+
+Udisks2 will be disabled by default in NixOS 22.11, but I had nothing to do
+with that change
+:::
 
 ## Second rustc
 
