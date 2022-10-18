@@ -237,6 +237,10 @@ Those three are the most common, especially `buildInputs` and
 `nativeBuildInputs`, but you can find some special cases. For example, the
 `gcc` package also uses `depsBuildTarget` and `depsTargetTarget`.
 
+Usually, for packaging packages with cross-compilation support, you just have
+to care about `buildInputs` and `nativeBuildInputs`. For anything else, you can
+ask for more information on the Cross-Compilation Matrix channel.
+
 :::
 
 ## Actually compiling stuff (quick version)
