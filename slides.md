@@ -154,19 +154,13 @@ user@pc ~ % x86_64-darwin-gcc test.c
 
 Build systems need to run on the build machine
 
-. . .
-
 ### Configuring
 
 Tools for finding dependencies need to run on the build machine
 
-. . .
-
 ### Building
 
 Tools that generates code need to run on the build machine
-
-. . .
 
 ### Testing
 
@@ -200,11 +194,11 @@ Tests need to run on the build machine
 \definecolor{target}{HTML}{c080d0}
 ```
 
------------------------------------------------------------------------------------------------------
-\textcolor{build}{Build Platform} \textcolor{host}{Host Platform} \textcolor{target}{Target Platform}
---------------------------------- ------------------------------- -----------------------------------
-Platform building the software    Platform running the software   Platform for which the software generates code (for e.g. `gcc`)
------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+**\textcolor{build}{Build Platform}** **\textcolor{host}{Host Platform}** **\textcolor{target}{Target Platform}**
+------------------------------------- ----------------------------------- ---------------------------------------
+Platform building the software        Platform running the software       Platform for which the software generates code (for e.g. `gcc`)
+-----------------------------------------------------------------------------------------------------------------
 
 [@nixosCross]  
 [@llvmNixpkgs]
@@ -222,13 +216,20 @@ Platform building the software    Platform running the software   Platform for w
 
 ## Specifying dependencies in Nixpkgs
 
-TODO: separate the three thingies
+- `buildInputs`
+- `nativeBuildInputs`
 
-![Types of inputs](./imgs/deps-types.png){width=70% align=center}
+---
 
-. . .
+![`buildInputs`](./imgs/deps-type-buildInputs.png){width=70% align=center}
 
-`deps${HOST}${TARGET}`{.bash}
+---
+
+![`nativeBuildInputs`](./imgs/deps-type-nativeBuildInputs.png){width=70% align=center}
+
+---
+
+![`depsBuildBuild`](./imgs/deps-type-depsBuildBuild.png){width=70% align=center}
 
 ::: notes
 
@@ -454,17 +455,39 @@ cc1: error: '-mcall-aixdesc' incompatible with '-mabi=elfv2'
 > {standard input}:4305: Error: unrecognized opcode: `wrteei'
 ```
 
+# The ABI issue
+
+## What's an ABI
+
+ABI:
+: Application Binary Interface
+
+- Calling conventions
+- How data is stored in memory
+- ...
+
 ## The history of powerpc64 (in 1 slide)
 
-#. The powerpc64 architecture: *exists*
-#. gcc defaults to the ELFv1 ABI
-#. IBM started the powerpc64le architecture
-#. IBM saw an opportunity to create a new ABI (ELFv2)
-#. IBM made the ABI orthogonal to endianness
-#. gcc now defaults the ELFv2 ABI, only on little-endian
-#. The End
+<!-- #. The powerpc64 architecture: *exists* -->
+<!-- #. gcc defaults to the ELFv1 ABI -->
+<!-- #. IBM started the powerpc64le architecture -->
+<!-- #. IBM saw an opportunity to create a new ABI (ELFv2) -->
+<!-- #. IBM made the ABI orthogonal to endianness -->
+<!-- #. gcc now defaults the ELFv2 ABI, only on little-endian -->
+<!-- #. The End -->
+
+![Abridged PowerPC history](./imgs/power-history.png){width=90%}
+
+. . .
 
 [@ppcelfv2]
+
+::: notes
+
+They developed the ELFv2 ABI in a way that is orthogonal to the endianness:
+either ELFv1 or ELFv2 can be used for PowerPC64 big-endian.
+
+:::
 
 ## Implications
 

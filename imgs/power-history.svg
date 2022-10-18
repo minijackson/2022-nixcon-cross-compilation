@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="194.83797mm"
+   height="37.804771mm"
+   viewBox="0 0 194.83797 37.804771"
+   version="1.1"
+   id="svg2278"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="power-history.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2280"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="1.7531987"
+     inkscape:cx="368.46937"
+     inkscape:cy="7.7002113"
+     inkscape:window-width="2560"
+     inkscape:window-height="1391"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="88.725645,16.521663"
+       orientation="-1,0"
+       id="guide4285"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="34.681587,33.455033"
+       orientation="0,-1"
+       id="guide4287"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="17.837891,22.415883"
+       orientation="1,0"
+       id="guide4345"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="34.681586,7.6478624"
+       orientation="0,-1"
+       id="guide4375"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="43.725643,22.415883"
+       orientation="-1,0"
+       id="guide4613"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="138.72565,22.415883"
+       orientation="-1,0"
+       id="guide4733"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="178.72565,22.415883"
+       orientation="-1,0"
+       id="guide5006"
+       inkscape:label=""
+       inkscape:locked="false"
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2275">
+    <marker
+       style="overflow:visible"
+       id="Arrow5"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow5"
+       markerWidth="5.8874264"
+       markerHeight="6.6094756"
+       viewBox="0 0 5.8874262 6.6094758"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 6,0 c -3,1 -7,3 -9,5 0,0 0,-4 2,-5 -2,-1 -2,-5 -2,-5 2,2 6,4 9,5 z"
+         id="path8893" />
+    </marker>
+    <marker
+       orient="auto-start-reverse"
+       refY="0"
+       refX="0"
+       id="marker3424"
+       inkscape:stockid="three_dots"
+       style="overflow:visible"
+       markerWidth="5.5"
+       markerHeight="1.5"
+       viewBox="0 0 5.5 1.5"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <g
+         id="g3422"
+         transform="scale(0.5)">
+        <circle
+           cx="4"
+           cy="0"
+           r="1"
+           id="circle3416"
+           style="fill:context-stroke;stroke:context-stroke" />
+        <circle
+           cx="8"
+           cy="0"
+           r="1"
+           id="circle3418"
+           style="fill:context-stroke;stroke:context-stroke" />
+        <circle
+           cx="12"
+           cy="0"
+           r="1"
+           id="circle3420"
+           style="fill:context-stroke;stroke:context-stroke" />
+      </g>
+    </marker>
+    <marker
+       orient="auto-start-reverse"
+       refY="0"
+       refX="0"
+       id="three_dots"
+       inkscape:stockid="three_dots"
+       style="overflow:visible"
+       markerWidth="5.5"
+       markerHeight="1.5"
+       viewBox="0 0 5.5 1.5"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <g
+         id="g1246"
+         transform="scale(0.5)">
+        <circle
+           cx="4"
+           cy="0"
+           r="1"
+           id="circle237"
+           style="fill:context-stroke;stroke:context-stroke" />
+        <circle
+           cx="8"
+           cy="0"
+           r="1"
+           id="circle239"
+           style="fill:context-stroke;stroke:context-stroke" />
+        <circle
+           cx="12"
+           cy="0"
+           r="1"
+           id="circle241"
+           style="fill:context-stroke;stroke:context-stroke" />
+      </g>
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker9466"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Dot"
+       markerWidth="5.4000001"
+       markerHeight="5.4000001"
+       viewBox="0 0 5.4 5.4"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.45)"
+         style="fill:#808bed;fill-rule:evenodd;stroke:context-stroke;stroke-width:2"
+         d="M 5,0 C 5,2.76 2.76,5 0,5 -2.76,5 -5,2.76 -5,0 c 0,-2.76 2.3,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path9464"
+         sodipodi:nodetypes="sssss" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-5.435178,-104.84527)">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#three_dots);marker-mid:url(#marker9466);marker-end:url(#marker3424)"
+       d="m 12.185178,120.23416 h 11.08789 25.887752 45 50 40 9.36233"
+       id="path2347"
+       sodipodi:nodetypes="ccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="49.16082"
+       y="109.19501"
+       id="text4283"><tspan
+         sodipodi:role="line"
+         id="tspan4281"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="49.16082"
+         y="109.19501"
+         rotate="0 0 0 0 0"
+         dy="0"
+         dx="0">1995</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="23.273067"
+       y="109.19501"
+       id="text4343"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="23.273067"
+         y="109.19501"
+         rotate="0 0 0 0 0 0 0 0 0"
+         dy="0 0 0 0 0"
+         dx="0 0 0 0 0"
+         id="tspan4347"><tspan
+           dx="0"
+           dy="0"
+           rotate="0 0 0 0 0"
+           id="tspan4349"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583">1991</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.99722px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="49.16082"
+       y="135.00218"
+       id="text4355"><tspan
+         sodipodi:role="line"
+         id="tspan4353"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.99722px;font-family:mono;-inkscape-font-specification:mono;text-align:center;text-anchor:middle;fill:#f0f0f0;fill-opacity:1;stroke-width:0.264583"
+         x="49.16082"
+         y="135.00218">ELFv1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.99722px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="23.273067"
+       y="135.00519"
+       id="text4373"><tspan
+         sodipodi:role="line"
+         id="tspan4371"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.99722px;font-family:mono;-inkscape-font-specification:mono;text-align:center;text-anchor:middle;fill:#f0f0f0;fill-opacity:1;stroke-width:0.264583"
+         x="23.273067"
+         y="135.00519">POWER</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="94.16082"
+       y="109.19501"
+       id="text4617"><tspan
+         sodipodi:role="line"
+         id="tspan4615"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="94.16082"
+         y="109.19501"
+         rotate="0 0 0 0 0">2004</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.99722px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="94.16082"
+       y="135.00218"
+       id="text4621"><tspan
+         sodipodi:role="line"
+         id="tspan4619"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.99722px;font-family:mono;-inkscape-font-specification:mono;text-align:center;text-anchor:middle;fill:#f0f0f0;fill-opacity:1;stroke-width:0.264583"
+         x="94.16082"
+         y="135.00218">PowerPC64</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="144.16081"
+       y="109.19501"
+       id="text4761"><tspan
+         sodipodi:role="line"
+         id="tspan4759"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="144.16081"
+         y="109.19501"
+         rotate="0 0 0 0 0">2014</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.99722px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="144.16083"
+       y="135.00218"
+       id="text4845"><tspan
+         sodipodi:role="line"
+         id="tspan4843"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.99722px;font-family:mono;-inkscape-font-specification:mono;text-align:center;text-anchor:middle;fill:#f0f0f0;fill-opacity:1;stroke-width:0.264583"
+         x="144.16083"
+         y="135.00218">Little-Endian</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.99722px;font-family:mono;-inkscape-font-specification:mono;text-align:center;text-anchor:middle;fill:#f0f0f0;fill-opacity:1;stroke-width:0.264583"
+         x="144.16083"
+         y="142.65004"
+         id="tspan4889">ELFv2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="144.16081"
+       y="109.19501"
+       id="text5010"><tspan
+         sodipodi:role="line"
+         id="tspan5008"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="144.16081"
+         y="109.19501"
+         rotate="0 0 0 0 0">2014</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="184.16081"
+       y="109.19501"
+       id="text5014"><tspan
+         sodipodi:role="line"
+         id="tspan5012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="184.16081"
+         y="109.19501"
+         rotate="0 0 0 0 0">2022</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:TeX;-inkscape-font-specification:TeX;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="36.517822"
+       y="226.83365"
+       id="text5018"
+       transform="rotate(-45)"><tspan
+         sodipodi:role="line"
+         id="tspan5016"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Fanwood;-inkscape-font-specification:Fanwood;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="36.517822"
+         y="226.83365"
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0">You are here</tspan></text>
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow5)"
+       d="m 184.16082,131.72167 0.0159,-6.45206"
+       id="path5083"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
