@@ -354,36 +354,37 @@ If NixOS is too complicated, we'll fallback to something more simple, and
 deploy just the acquisition software using Nix
 :::
 
-## Yocto issues
-
-TODO: keep?
-
-- Yocto works in layers (think: overlays)
-- We have a layer for our board
-- Our layer has dependencies on other layers
-- Dependencies are not listed
-- Dependencies versions are not documented
-
-::: notes
-Yocto layers contain mainly packages and image types, but can also modify
-packages from other layers.
-
-I had to start from the latest version of Yocto, see that our layer was not
-compatible with that, modify our layer to make it compatible, see that the
-manufacturer's kernel is so old that it needs an old version of GCC, figure out
-which version of Yocto uses which version of GCC, change the version of all
-layers, update software for the Nix package that I'm creating...
-:::
+<!-- ## Yocto issues -->
+<!---->
+<!-- TODO: keep? -->
+<!---->
+<!-- - Yocto works in layers (think: overlays) -->
+<!-- - We have a layer for our board -->
+<!-- - Our layer has dependencies on other layers -->
+<!-- - Dependencies are not listed -->
+<!-- - Dependencies versions are not documented -->
+<!---->
+<!-- ::: notes -->
+<!-- Yocto layers contain mainly packages and image types, but can also modify -->
+<!-- packages from other layers. -->
+<!---->
+<!-- I had to start from the latest version of Yocto, see that our layer was not -->
+<!-- compatible with that, modify our layer to make it compatible, see that the -->
+<!-- manufacturer's kernel is so old that it needs an old version of GCC, figure out -->
+<!-- which version of Yocto uses which version of GCC, change the version of all -->
+<!-- layers, update software for the Nix package that I'm creating... -->
+<!-- ::: -->
 
 ## Minimal NixOS configuration
 
 ```nix
-{ lib, ... }: {
+{ lib, modulesPath, ... }: {
   # Removes some default things
   imports = [ (modulesPath + "/profiles/minimal.nix") ];
 
   nixpkgs.crossSystem = lib.systems.examples.ppc64;
-  nixpkgs.config.allowUnsupportedSystem = true;
+
+  # Some details intentionally left out...
 
   # Do the stable version
   system.stateVersion = "22.05";
@@ -524,6 +525,10 @@ Some other distributions (Void Linux, FreeBSD, ...) pushes for ELFv2
 
 Thanks to Ryan Burns for pushing me in the right direction!
 
+. . .
+
+**\textcolor{red}{nettle}** and **\textcolor{red}{kexec-tools}**: fixed!
+
 ::: notes
 Let's yoink the patches from Void Linux, and with that, nettle and kexec-tools
 work!
@@ -606,7 +611,7 @@ systemd.shutdownRamfs.enable = false;
 
 ---
 
-Now, onwards to \textcolor{red}{linux}...
+Now, onward to **\textcolor{red}{linux}**...
 
 . . .
 
@@ -648,7 +653,7 @@ Oh well, I fetched the fix as a patch, applied it and moved on...
 ## The hacks file
 
 ```nix
-self: super: {
+final: prev: {
   kexec-tools = prev.kexec-tools.overrideAttrs (old: {
     patches = (old.patches or []) ++ [
       (pkgs.fetchpatch {
@@ -698,6 +703,19 @@ The reproducibility of Nix isn't a myth, the screenshot of errors I showed you
 are very recent: since this is a flake project I just took an old commit,
 commented out the workarounds, and I could see all the old errors that I had.
 :::
+
+## Comparison
+
+--------------------------------------------
+           Starting Reprod Develop Community
+---------  -------- ------ ------- ---------
+**Nix**       `+`    `++`    `++`   `+` / eh
+
+Yocto         eh      `+`     eh      `++`
+
+Buildroot    `++`     eh     `+`      `++`
+-------------------------------------------
+: Comparison between embedded Linux build systems (but biased)
 
 ## Bonus: Network boot
 
