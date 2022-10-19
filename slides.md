@@ -17,6 +17,8 @@ colortheme: owl
 links-as-notes: true
 beameroption: "show notes on second screen=right"
 
+titlegraphic: ./imgs/cea.pdf
+
 lang: en-US
 
 citation-style: chicago-note-bibliography.csl
