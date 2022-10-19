@@ -588,7 +588,7 @@ NixOS.
 And the frustrating thing was that binutils *has* a fix, but wasn't in any
 released version.
 
-And Yocto was fetching it's binutils from an unreleased version, on a specific
+And Yocto was fetching its binutils from an unreleased version, on a specific
 commit from a development branch.
 
 Oh well, I fetched the fix as a patch, applied it and moved on...
