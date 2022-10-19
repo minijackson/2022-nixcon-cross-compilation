@@ -126,8 +126,7 @@ We might do that due to:
 
 In all phases of the build, there are programs run on the build machine.
 
-But runtime dependencies need to be found, and they will run on our end machine
-(usually).
+But runtime dependencies need to run on our end machine (usually).
 
 ::: notes
 
@@ -162,6 +161,8 @@ But runtime dependencies need to be found, and they will run on our end machine
 ------------------------------------- ----------------------------------- ---------------------------------------
 Platform building the software        Platform running the software       Platform for which the software generates code (for e.g. `gcc`)
 -----------------------------------------------------------------------------------------------------------------
+
+. . .
 
 [@nixosCross]  
 [@llvmNixpkgs]
@@ -343,6 +344,10 @@ deploy just the acquisition software using Nix
 The "minimal" profile removes things like documentation and makes it so that
 some packages are built without graphical support.
 :::
+
+---
+
+Let's try to compile that
 
 ---
 
@@ -631,7 +636,7 @@ It took some effort to get there, but:
 - Most issues arose from the (quite old) `powerpc64` big-endian architecture
 - And the friggin' `gcc` / `binutils` issue
 
-:::
+::: notes
 The reproducibility of Nix isn't a myth, the screenshot of errors I showed you
 are very recent: since this is a flake project I just took an old commit,
 commented out the workarounds, and I could see all the old errors that I had.
@@ -661,6 +666,15 @@ Yocto         eh      `+`     eh      `++`
 Buildroot    `++`     eh     `+`      `++`
 -------------------------------------------
 : Comparison between embedded Linux build systems (but biased)
+
+::: notes
+Community is "eh" not in terms of quality, on the contrary. But compared to
+Yocto and Buildroot, whose community is solely centered around embedded
+software and cross-compilation, we need more human resources.
+
+We need more human resources to have more testing, more experiments, more
+infrastructure, and more platforms upgraded to Tier 2.
+:::
 
 ## Bonus: Network boot
 
